@@ -1,0 +1,23 @@
+{
+  "name": "match-lazy-module",
+  "version": "1.0.0",
+  "description": "匹配需要懒加载的模块，并且生成对应的懒加载代码文件",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://empty916@github.com/empty916/match-lazy-module.git"
+  },
+  "keywords": [
+    "dynamic",
+    "import"
+  ],
+  "author": "empty916",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/empty916/match-lazy-module/issues"
+  },
+  "homepage": "https://github.com/empty916/match-lazy-module#readme"
+}
