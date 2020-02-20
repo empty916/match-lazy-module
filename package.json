@@ -1,6 +1,6 @@
 {
   "name": "match-lazy-module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "匹配需要懒加载的模块，并且生成对应的懒加载代码文件",
   "main": "index.js",
   "scripts": {

@@ -72,7 +72,6 @@ export default {
 
 	const removeExt = str => str.split(".")[0];
 	const authGetModule = () => {
-		console.log(`${moduleBasePath}${slash}**${slash}${matchFileName}.*`);
 		const matchFile = getMatchedFile();
 
 		const formatModuleNames = matchFile
