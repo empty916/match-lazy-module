@@ -20,6 +20,7 @@ function pipe(...funcs) {
  *  moduleBasePath： 需要匹配模块的目录
  *  moduleDirName：需要匹配模块的的目录名字
  *  matchFileName：需要匹配模块下的文件名
+ *  exclude: 不需要匹配的文件名正则
  *  slash：路径分割符号, 默认是'/'
  *  importPathPrefix：导出模块的路径前缀
  *  fileName：生成文件的全路径
@@ -30,10 +31,14 @@ function matchLazyModule({
 	moduleBasePath,
 	moduleDirName,
 	matchFileName,
+	exclude,
 	slash = '/',
 	importPathPrefix,
 	fileName
 }) {
+	if (!!exclude && !(exclude instanceof RegExp)) {
+		throw new Error('matchLazyModule: params exclude must be instanceof RegExp !');
+	}
 	// utils
 	const removeModuleDirName = p =>
 		p.replace(`${slash}${moduleDirName}${slash}`, "");
@@ -59,7 +64,8 @@ function matchLazyModule({
 	// 首字母小写
 
 	const getMatchedFile = () =>
-		glob.sync(`${moduleBasePath}${slash}**${slash}${matchFileName}.*`);
+		glob.sync(`${moduleBasePath}${slash}**${slash}${matchFileName}.*`)
+			.filter(name => (!!exclude ? !exclude.test(name) : true))
 	const replaceAbsPath = p => p.replace(projectPath, "");
 	const addRelativePathHeader = p => `${importPathPrefix}${p}`;
 	const createFileData = data => `
